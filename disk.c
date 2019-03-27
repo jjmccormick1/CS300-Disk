@@ -1,27 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "disk.h"
 //Disk program to handle disk requests
 //Loads the queue then process the queue over and over again
 //Keep doing until the file empties
 
-long q[10000];
+request q[10000];
 int qi = 0;
+int time = 0;
+FILE * file;
 
-typedef struct {
-    loc : 30;
-    proc : 30;
-}rec;
-
-typedef union {
-    rec x;
-    long y;
-}rec_un;
-
-void enqueue(long in) {
+void enqueue(request in) {
     q[qi++] = in;
-
-long dequeue(int pos) {
-    int r = q[pos];
+}
+request dequeue(int pos) {
+    request r = q[pos];
     q[pos] = q[--qi];
     return r;
 }
@@ -32,18 +25,22 @@ int load_q(int time) {//time tells us what time it is in disk time
     int loc;
     int t;
     int proc;
-    rec_un x;
-    
-    scanf("%d%d%d\n", &t, &loc, &proc);
-    x.x.loc = loc;
-    x.x.proc = proc;
-    enqueue(x.y);
+    while(t <= time && feof(file)) {
+        request x;
+        fscanf(file, "%d%d%d\n", &t, &loc, &proc);
+        x.loc = loc;
+        x.proc = proc;
+        enqueue(x);
+    }
 }
 
-int main (void) {
-    while(!EOF) {S
-        LOAD
+int main (int argc, char** argv) {
+    file = fopen(argv[1],"r");
+
+    while(!feof(file)) {
+        load_q(time);
         Process
     }
+    return 0;
 }
 
