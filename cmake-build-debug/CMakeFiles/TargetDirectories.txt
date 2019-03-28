@@ -1,0 +1,4 @@
+/home/jj/CLionProjects/disk/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jj/CLionProjects/disk/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jj/CLionProjects/disk/cmake-build-debug/CMakeFiles/disk.dir
+/home/jj/CLionProjects/disk/cmake-build-debug/CMakeFiles/gen.dir
