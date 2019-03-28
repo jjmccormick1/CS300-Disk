@@ -25,21 +25,25 @@ int load_q(int time) {//time tells us what time it is in disk time
     int loc;
     int t;
     int proc;
+    fscanf(file, "%d%d%d\n", &t, &loc, &proc);
     while(t <= time && feof(file)) {
         request x;
-        fscanf(file, "%d%d%d\n", &t, &loc, &proc);
         x.loc = loc;
         x.proc = proc;
         enqueue(x);
+        fscanf(file, "%d%d%d\n", &t, &loc, &proc);
     }
+    return 0;
 }
 
+int process() {
+    return 0;
+}
 int main (int argc, char** argv) {
     file = fopen(argv[1],"r");
 
     while(!feof(file)) {
         load_q(time);
-        Process
     }
     return 0;
 }
