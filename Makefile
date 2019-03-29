@@ -16,4 +16,5 @@ clean:
 	@rm -f disk
 	@rm -f gen
 	@rm -f *.o
+	@rm -f *.gch
 	@rm -f tmp
