@@ -9,6 +9,7 @@ request * q[10000];
 int qi = 0;
 int time = 10;
 int t = 0;
+int inOrOut = 0;
 FILE * file;
 
 void enqueue(request * in) {
@@ -46,12 +47,33 @@ int getSmallestInd() {
     }
     return ind;
 }
+int getLargestInd() {
+    int tmp = q[0]->loc;
+    int ind = 0;
+    for(int i = 1; i < qi; i++) {
+        if(q[i]->loc > tmp){
+            tmp = q[i]->loc;
+            ind = i;
+        }
+    }
+    return ind;
+}
+
 int process() {
     while(qi > 0) {
-        request * r = dequeue(getSmallestInd());
+        request * r;
+        if(inOrOut) {
+            r = dequeue(getSmallestInd());
+            inOrOut = 1;
+        }
+        else {
+            r = dequeue(getLargestInd());
+            inOrOut = 0;
+        }
         time+=5;
         printf("%d %d\n",r->proc, r->loc);
     }
+    return 1;
 }
 
 

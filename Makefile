@@ -8,7 +8,12 @@ disk:
 gen:
 	$(CC) $(CFLAGS) gen.c -o gen
 
+run: gen disk
+	./gen > tmp
+	./disk tmp
+
 clean:
 	@rm -f disk
 	@rm -f gen
 	@rm -f *.o
+	@rm -f tmp
